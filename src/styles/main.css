@@ -485,69 +485,6 @@ ul {
   overflow-wrap: break-word;
 }
 
-.horizon {
-  margin-top: 36px;
-}
-
-.horizon__title {
-  margin-bottom: 12px;
-  color: #171717;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  line-height: 1.2;
-  text-transform: uppercase;
-}
-
-.horizon__grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.horizon__card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-  min-width: 0;
-  padding: 16px;
-  border: 1px dashed #171717;
-  border-radius: 8px;
-  background: #ffffff;
-  color: #171717;
-}
-
-.horizon__icon {
-  display: inline-flex;
-  width: 24px;
-  height: 24px;
-  color: #171717;
-}
-
-.horizon__name {
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.3;
-  overflow-wrap: break-word;
-}
-
-.horizon__badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 3px 8px;
-  border-radius: 4px;
-  background: #ff6538;
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  line-height: 1.2;
-}
-
 .footer {
   margin-top: 28px;
 }
@@ -582,10 +519,6 @@ button:focus-visible,
 
   .hero__title {
     font-size: 32px;
-  }
-
-  .horizon__grid {
-    grid-template-columns: 1fr;
   }
 }
 

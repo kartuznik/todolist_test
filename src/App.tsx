@@ -1,7 +1,6 @@
 import { AddTaskButton } from './components/AddTaskButton';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
-import { HorizonSection } from './components/HorizonSection';
 import { Hero } from './components/Hero';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
 import { Stats } from './components/Stats';
@@ -29,7 +28,6 @@ export default function App() {
             onToggle={toggleTask}
             onDelete={deleteTask}
           />
-          <HorizonSection />
         </main>
         <Footer />
       </div>
