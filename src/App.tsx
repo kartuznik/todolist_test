@@ -2,6 +2,7 @@ import { AddTaskButton } from './components/AddTaskButton';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
+import { LanguageSwitcher } from './components/LanguageSwitcher';
 import { Stats } from './components/Stats';
 import { TaskSection } from './components/TaskSection';
 import { useTasks } from './hooks/useTasks';
@@ -11,6 +12,7 @@ export default function App() {
 
   return (
     <div className="page">
+      <LanguageSwitcher />
       <div className="container">
         <Header />
         <main>

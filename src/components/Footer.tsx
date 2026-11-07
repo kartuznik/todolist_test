@@ -1,7 +1,11 @@
+import { useLanguage } from '../i18n/LanguageContext';
+
 export function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="footer">
-      <p>Designed to help you focus.</p>
+      <p>{t.footer.text}</p>
     </footer>
   );
 }

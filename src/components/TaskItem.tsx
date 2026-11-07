@@ -1,3 +1,4 @@
+import { useLanguage } from '../i18n/LanguageContext';
 import type { Task } from '../types/task';
 
 interface TaskItemProps {
@@ -53,10 +54,11 @@ function TrashIcon() {
 }
 
 export function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
+  const { t } = useLanguage();
   const className = task.completed ? 'task-item task-item--done' : 'task-item';
   const toggleLabel = task.completed
-    ? `Mark "${task.title}" as active`
-    : `Mark "${task.title}" as done`;
+    ? t.aria.toggleActive(task.title)
+    : t.aria.toggleDone(task.title);
 
   return (
     <li className={className}>
@@ -75,7 +77,7 @@ export function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
       <button
         type="button"
         className="task-item__delete"
-        aria-label={`Delete "${task.title}"`}
+        aria-label={t.aria.delete(task.title)}
         onClick={() => onDelete(task.id)}
       >
         <TrashIcon />

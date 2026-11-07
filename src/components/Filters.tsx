@@ -1,10 +1,7 @@
+import { useLanguage } from '../i18n/LanguageContext';
 import type { TaskFilter } from '../types/task';
 
-const FILTERS: readonly { value: TaskFilter; label: string }[] = [
-  { value: 'all', label: 'ALL' },
-  { value: 'active', label: 'ACTIVE' },
-  { value: 'done', label: 'DONE' },
-];
+const FILTERS: readonly TaskFilter[] = ['all', 'active', 'done'];
 
 interface FiltersProps {
   value: TaskFilter;
@@ -12,23 +9,25 @@ interface FiltersProps {
 }
 
 export function Filters({ value, onChange }: FiltersProps) {
+  const { t } = useLanguage();
+
   return (
-    <div className="filters" role="group" aria-label="Filter tasks">
+    <div className="filters" role="group" aria-label={t.filters.label}>
       {FILTERS.map((option) => {
-        const selected = option.value === value;
+        const selected = option === value;
         const className = selected
           ? 'filters__button filters__button--active'
           : 'filters__button';
 
         return (
           <button
-            key={option.value}
+            key={option}
             type="button"
             className={className}
             aria-pressed={selected}
-            onClick={() => onChange(option.value)}
+            onClick={() => onChange(option)}
           >
-            {option.label}
+            {t.filters[option]}
           </button>
         );
       })}

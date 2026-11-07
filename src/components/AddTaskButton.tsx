@@ -1,11 +1,13 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import type { FormEvent, KeyboardEvent } from 'react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 interface AddTaskButtonProps {
   onAdd: (title: string) => boolean;
 }
 
 export function AddTaskButton({ onAdd }: AddTaskButtonProps) {
+  const { t } = useLanguage();
   const [isEditing, setIsEditing] = useState(false);
   const [value, setValue] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
@@ -67,7 +69,7 @@ export function AddTaskButton({ onAdd }: AddTaskButtonProps) {
     return (
       <div className="add-task-wrap">
         <button type="button" className="add-task" onClick={() => setIsEditing(true)}>
-          + ADD A NEW TASK
+          {t.add.button}
         </button>
       </div>
     );
@@ -77,7 +79,7 @@ export function AddTaskButton({ onAdd }: AddTaskButtonProps) {
     <div className="add-task-wrap">
       <form ref={formRef} className="add-task-form" onSubmit={handleSubmit}>
         <label className="visually-hidden" htmlFor={inputId}>
-          New task
+          {t.add.label}
         </label>
         <input
           ref={inputRef}
@@ -85,8 +87,8 @@ export function AddTaskButton({ onAdd }: AddTaskButtonProps) {
           className="add-task-input"
           type="text"
           value={value}
-          placeholder="What needs to be done?"
-          aria-label="New task"
+          placeholder={t.add.placeholder}
+          aria-label={t.add.label}
           autoFocus
           autoComplete="off"
           enterKeyHint="done"

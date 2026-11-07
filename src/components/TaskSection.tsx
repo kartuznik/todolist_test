@@ -1,3 +1,5 @@
+import { useLanguage } from '../i18n/LanguageContext';
+import type { Translations } from '../i18n/types';
 import type { Task, TaskFilter } from '../types/task';
 import { EmptyState } from './EmptyState';
 import { Filters } from './Filters';
@@ -13,14 +15,14 @@ interface TaskSectionProps {
   onDelete: (id: string) => void;
 }
 
-function emptyMessage(filter: TaskFilter, isEmptyList: boolean): string {
+function emptyMessage(filter: TaskFilter, isEmptyList: boolean, t: Translations): string {
   if (isEmptyList || filter === 'all') {
-    return 'No tasks yet. Add your first task above!';
+    return t.empty.all;
   }
   if (filter === 'active') {
-    return 'No active tasks.';
+    return t.empty.active;
   }
-  return 'No completed tasks.';
+  return t.empty.done;
 }
 
 export function TaskSection({
@@ -32,19 +34,19 @@ export function TaskSection({
   onToggle,
   onDelete,
 }: TaskSectionProps) {
-  const totalLabel = `${total.toString().padStart(2, '0')} TOTAL`;
+  const { t } = useLanguage();
 
   return (
     <section className="task-section" aria-labelledby="your-tasks-heading">
       <div className="task-section__header">
         <h2 id="your-tasks-heading" className="task-section__title">
-          YOUR TASKS
+          {t.tasks.title}
         </h2>
-        <p className="task-section__total">{totalLabel}</p>
+        <p className="task-section__total">{t.tasks.total(total)}</p>
       </div>
       <Filters value={filter} onChange={onFilterChange} />
       {tasks.length === 0 ? (
-        <EmptyState message={emptyMessage(filter, isEmptyList)} />
+        <EmptyState message={emptyMessage(filter, isEmptyList, t)} />
       ) : (
         <TaskList tasks={tasks} onToggle={onToggle} onDelete={onDelete} />
       )}
