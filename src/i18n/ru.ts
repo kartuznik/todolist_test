@@ -2,8 +2,9 @@ import type { Translations } from './types';
 
 export const ru: Translations = {
   meta: {
-    title: 'Задачи',
-    description: 'Список дел для личной продуктивности. Немного прогресса каждый день.',
+    title: 'Задачи | Личная продуктивность',
+    description:
+      'Личный список задач. Добавляйте дела, отмечайте выполненное и двигайтесь вперёд понемногу каждый день.',
   },
   header: {
     logo: 'ЗАДАЧИ / 001',
@@ -19,7 +20,7 @@ export const ru: Translations = {
   },
   tasks: {
     title: 'ВАШИ ЗАДАЧИ',
-    total: (count) => `${count.toString().padStart(2, '0')} ВСЕГО`,
+    total: (count) => `Всего: ${count}`,
   },
   filters: {
     all: 'ВСЕ',
