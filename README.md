@@ -44,6 +44,10 @@ The live site is [https://kartuznik.github.io/todolist_test/](https://kartuznik.
 
 The workflow needs the repository `pages: write` and `id-token: write` permissions (already set in the workflow file). The first deployment creates the `github-pages` environment.
 
+## Languages
+
+The interface is in Russian by default and switches to English from the **RU / EN** control in the top-right corner. The choice is saved in this browser under `localStorage` key `todolist-lang` (`ru` or `en`). Anything else stored there is ignored and the app stays in Russian. Task data stays in `todolist.tasks` and does not change when the language changes.
+
 ## Features
 
 - Add a task from the orange button. It becomes an input; Enter adds the trimmed title, Escape or a click outside cancels, and a blank title is ignored.
