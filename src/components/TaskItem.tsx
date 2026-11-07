@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import type { AnimationEvent } from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
 import type { Task } from '../types/task';
 
@@ -53,15 +55,53 @@ function TrashIcon() {
   );
 }
 
+const EXIT_MS = 200;
+
+function prefersReducedMotion(): boolean {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
 export function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
   const { t } = useLanguage();
-  const className = task.completed ? 'task-item task-item--done' : 'task-item';
+  const [exiting, setExiting] = useState(false);
+  const className = [
+    'task-item',
+    task.completed ? 'task-item--done' : '',
+    exiting ? 'task-item--exiting' : '',
+  ]
+    .filter((name) => name.length > 0)
+    .join(' ');
   const toggleLabel = task.completed
     ? t.aria.toggleActive(task.title)
     : t.aria.toggleDone(task.title);
 
+  useEffect(() => {
+    if (!exiting) {
+      return;
+    }
+    const timeout = window.setTimeout(() => onDelete(task.id), EXIT_MS);
+    return () => window.clearTimeout(timeout);
+  }, [exiting, onDelete, task.id]);
+
+  const requestDelete = () => {
+    if (exiting) {
+      return;
+    }
+    if (prefersReducedMotion()) {
+      onDelete(task.id);
+      return;
+    }
+    setExiting(true);
+  };
+
+  const handleExitAnimation = (event: AnimationEvent<HTMLLIElement>) => {
+    if (event.animationName === 'task-exit') {
+      onDelete(task.id);
+    }
+  };
+
   return (
-    <li className={className}>
+    <li className={className} onAnimationEnd={handleExitAnimation}>
       <button
         type="button"
         className="task-item__main"
@@ -78,7 +118,7 @@ export function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
         type="button"
         className="task-item__delete"
         aria-label={t.aria.delete(task.title)}
-        onClick={() => onDelete(task.id)}
+        onClick={requestDelete}
       >
         <TrashIcon />
       </button>

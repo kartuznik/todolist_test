@@ -35,7 +35,7 @@ export const en: Translations = {
   },
   empty: {
     all: 'No tasks yet. Add your first task above!',
-    active: 'No active tasks. Relax or add a new one!',
+    active: 'No active tasks. Great work — you can take a break!',
     done: 'No completed tasks yet. Time to get to work!',
   },
   footer: {
