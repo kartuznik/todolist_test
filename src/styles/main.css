@@ -400,7 +400,8 @@ ul {
 
 .task-item__title {
   min-width: 0;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .task-item--done .task-item__title {
