@@ -1,5 +1,23 @@
-node_modules
-dist
+# dependencies and build
+node_modules/
+dist/
+*.tsbuildinfo
+.vite/
+coverage/
+
+# secrets (standards/.gitignore and RULES.md §4)
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+secrets/
+CREDENTIALS.md
+
+# logs and OS
+*.log
+npm-debug.log*
 .DS_Store
-*.local
-.vite
+
+# editor — canon does not keep extensions.json
+.vscode/
