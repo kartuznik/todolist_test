@@ -213,12 +213,32 @@ ul {
   line-height: 1.4;
 }
 
+.stats-block {
+  margin-top: 20px;
+}
+
 .stats {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
-  margin-top: 20px;
+}
+
+.progress {
+  margin-top: 12px;
+  height: 4px;
+  width: 100%;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress__fill {
+  display: block;
+  height: 100%;
+  background: #ff6538;
+  border-radius: inherit;
+  transition: width 0.2s ease;
 }
 
 .badge {
@@ -509,7 +529,21 @@ button:focus-visible,
   }
 
   .container {
-    padding: 52px 16px 32px;
+    padding: 68px 16px 32px;
+  }
+
+  .lang-switcher__button,
+  .filters__button,
+  .add-task,
+  .add-task-input,
+  .task-item__main,
+  .task-item__delete {
+    min-height: 44px;
+  }
+
+  .task-item__delete {
+    flex-basis: 44px;
+    width: 44px;
   }
 
   .header {

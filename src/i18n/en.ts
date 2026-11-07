@@ -17,6 +17,7 @@ export const en: Translations = {
   stats: {
     completed: (count) => `${count} COMPLETED`,
     remaining: (count) => `${count} REMAINING`,
+    progress: 'Completion progress',
   },
   tasks: {
     title: 'YOUR TASKS',

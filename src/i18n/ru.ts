@@ -17,6 +17,7 @@ export const ru: Translations = {
   stats: {
     completed: (count) => `${count} ВЫПОЛНЕНО`,
     remaining: (count) => `${count} ОСТАЛОСЬ`,
+    progress: 'Прогресс выполнения',
   },
   tasks: {
     title: 'ВАШИ ЗАДАЧИ',

@@ -16,6 +16,7 @@ export interface Translations {
   stats: {
     completed: (count: number) => string;
     remaining: (count: number) => string;
+    progress: string;
   };
   tasks: {
     title: string;
