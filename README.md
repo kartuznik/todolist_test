@@ -1,22 +1,26 @@
-# Tasks
+# Задачи
 
-A personal productivity to-do list. Add a task, mark it done, filter the list, and come back later — everything stays in this browser through `localStorage`.
+Личный список дел: добавить задачу, отметить её выполненной и вернуться к списку позже. Всё остаётся в этом браузере.
 
-## Prerequisites
+## Возможности
 
-- Node.js 20 or newer
-- npm
+- Интерфейс на русском и английском. По умолчанию русский. Переключатель **RU / EN** в правом верхнем углу, выбор хранится в `localStorage` под ключом `todolist-lang`.
+- Добавление, отметка выполнения, удаление и фильтры «все / активные / готовые». Пустую строку добавить нельзя.
+- Тонкая полоса прогресса под счётчиками: доля выполненных задач.
+- Короткие анимации появления, зачёркивания и удаления. При `prefers-reduced-motion: reduce` они отключаются, а удаление происходит сразу.
+- Задачи лежат в `localStorage` (`todolist.tasks`). Повреждённый JSON или неверная форма данных превращаются в пустой список и не роняют страницу.
+- Блок «На горизонте» — три карточки о будущих идеях (календарь, приоритеты, аналитика). Это только иллюстрация, без кнопок и переходов.
 
-## Run locally
+## Локальный запуск
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:5173/todolist_test/](http://localhost:5173/todolist_test/). The dev server uses the same `/todolist_test/` base path as GitHub Pages.
+Откройте [http://localhost:5173/todolist_test/](http://localhost:5173/todolist_test/). У сервера разработки тот же базовый путь, что и у GitHub Pages.
 
-## Typecheck and build
+## Сборка
 
 ```bash
 npm run typecheck
@@ -24,34 +28,20 @@ npm run build
 npm run preview
 ```
 
-`npm run build` runs `tsc --noEmit` and then Vite. The static site is written to `dist/`. Preview it at [http://localhost:4173/todolist_test/](http://localhost:4173/todolist_test/).
+`npm run build` запускает `tsc --noEmit`, затем Vite. Статика попадает в `dist/`. Просмотр: [http://localhost:4173/todolist_test/](http://localhost:4173/todolist_test/).
 
-## Deploy to GitHub Pages
+## Публикация
 
-Pushes to `main` run `.github/workflows/deploy.yml`:
+Пуш в `main` запускает `.github/workflows/deploy.yml`:
 
-1. `npm ci` and `npm run build`
-2. `actions/upload-pages-artifact` uploads `dist`
-3. `actions/deploy-pages` publishes that artifact
+1. `npm ci` и `npm run build`
+2. `actions/upload-pages-artifact` загружает `dist`
+3. `actions/deploy-pages` публикует сайт
 
-### One-time Pages setup
+Один раз в репозитории: **Settings > Pages > Build and deployment > Source: GitHub Actions**.
 
-1. Open the repository on GitHub.
-2. Go to **Settings > Pages**.
-3. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+Сайт: [https://kartuznik.github.io/todolist_test/](https://kartuznik.github.io/todolist_test/).
 
-The live site is [https://kartuznik.github.io/todolist_test/](https://kartuznik.github.io/todolist_test/).
+## Как это собрано
 
-The workflow needs the repository `pages: write` and `id-token: write` permissions (already set in the workflow file). The first deployment creates the `github-pages` environment.
-
-## Languages
-
-The interface is in Russian by default and switches to English from the **RU / EN** control in the top-right corner. The choice is saved in this browser under `localStorage` key `todolist-lang` (`ru` or `en`). Anything else stored there is ignored and the app stays in Russian. Task data stays in `todolist.tasks` and does not change when the language changes.
-
-## Features
-
-- Add a task from the orange button. It becomes an input; Enter adds the trimmed title, Escape or a click outside cancels, and a blank title is ignored.
-- Mark a task done or active again, or delete it.
-- Filter by all, active, or done.
-- Completed, remaining, and total counts update with the list. The total is zero-padded (`05 TOTAL`).
-- Tasks persist in `localStorage`. Corrupt JSON or a payload that is not a list of tasks loads as an empty list instead of crashing.
+Интерфейс доработан в Cursor cloud agent моделью Grok Bot.
