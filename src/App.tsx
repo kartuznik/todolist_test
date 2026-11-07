@@ -1,14 +1,13 @@
-import { useState } from 'react';
 import { AddTaskButton } from './components/AddTaskButton';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Stats } from './components/Stats';
 import { TaskSection } from './components/TaskSection';
-import type { TaskFilter } from './types/task';
+import { useTasks } from './hooks/useTasks';
 
 export default function App() {
-  const [filter, setFilter] = useState<TaskFilter>('all');
+  const { visibleTasks, filter, stats, setFilter, addTask, toggleTask, deleteTask } = useTasks();
 
   return (
     <div className="page">
@@ -16,16 +15,16 @@ export default function App() {
         <Header />
         <main>
           <Hero />
-          <Stats completed={0} remaining={0} />
-          <AddTaskButton onAdd={() => false} />
+          <Stats completed={stats.completed} remaining={stats.remaining} />
+          <AddTaskButton onAdd={addTask} />
           <TaskSection
-            total={0}
+            total={stats.total}
             filter={filter}
-            tasks={[]}
-            isEmptyList
+            tasks={visibleTasks}
+            isEmptyList={stats.total === 0}
             onFilterChange={setFilter}
-            onToggle={() => undefined}
-            onDelete={() => undefined}
+            onToggle={toggleTask}
+            onDelete={deleteTask}
           />
         </main>
         <Footer />
