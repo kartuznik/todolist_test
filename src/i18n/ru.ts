@@ -42,6 +42,13 @@ export const ru: Translations = {
   footer: {
     text: 'СОЗДАНО, ЧТОБЫ ПОМОЧЬ СОСРЕДОТОЧИТЬСЯ.',
   },
+  horizon: {
+    title: 'НА ГОРИЗОНТЕ',
+    soon: 'СКОРО',
+    calendar: 'Календарь',
+    priorities: 'Приоритеты',
+    analytics: 'Аналитика',
+  },
   aria: {
     delete: (title) => `Удалить «${title}»`,
     toggleDone: (title) => `Отметить «${title}» выполненной`,

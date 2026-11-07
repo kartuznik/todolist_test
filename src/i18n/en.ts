@@ -42,6 +42,13 @@ export const en: Translations = {
   footer: {
     text: 'DESIGNED TO HELP YOU FOCUS.',
   },
+  horizon: {
+    title: 'ON THE HORIZON',
+    soon: 'SOON',
+    calendar: 'Calendar',
+    priorities: 'Priorities',
+    analytics: 'Analytics',
+  },
   aria: {
     delete: (title) => `Delete "${title}"`,
     toggleDone: (title) => `Mark "${title}" as done`,

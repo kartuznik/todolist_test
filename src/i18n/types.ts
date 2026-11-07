@@ -41,6 +41,13 @@ export interface Translations {
   footer: {
     text: string;
   };
+  horizon: {
+    title: string;
+    soon: string;
+    calendar: string;
+    priorities: string;
+    analytics: string;
+  };
   aria: {
     delete: (title: string) => string;
     toggleDone: (title: string) => string;
